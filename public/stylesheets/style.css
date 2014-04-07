@@ -1,8 +1,143 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+// Styling for the form that is part of the leave a review page.
+.leave-review {
+  .helvetica;
 
-a {
-  color: #00B7FF;
+  form {
+    width: 100%;
+    max-width: 640px;
+    padding: 20px;
+  }
+
+  // The form is divided into sections, one per input field.
+  // Each section starts with a label.
+  form > div {
+    position: relative; // for tooltip
+    padding-bottom: 20px;
+
+    & > label {
+      .helvetica-bold;
+      display: block;
+      margin-bottom: 4px;
+      &.error {
+        color: #d34a2e;
+      }
+    }
+  }
+
+  // Tooltips are used to show error messages next to invalid fields.
+  .tooltip {
+    min-height: 1px;
+    .opacity(0);
+    display:none;
+    &.error {
+      display: block;
+      .opacity(1);
+    }
+  }
+
+
+  // Rating with stars and a textual hint (e.g 3 stars, 'Average').
+  .review-rating {
+    .tooltip {
+      width: 9em;
+      top: -18px;
+      left: 128px;
+    }
+    #review-stars {
+      display: inline-block;
+      vertical-align: middle;
+      height: 24px;
+      font-size: 14px; // &nbsp; between IMG elements, seriously
+    }
+    #review-stars-hint {
+      margin-left: 8px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+
+  // Review body, followed by notice (longer on desktop) that reviews are
+  // public.
+  .review-body {
+    textarea {
+      width: 100%;
+      height: 10em;
+    }
+    .tooltip {
+      width: 11em;
+    }
+    .review-body-notice {
+      color: @dark-gray;
+      padding: 0;
+    }
+    .review-body-notice-expanded {
+      @media @mobile {
+        display: none;
+      }
+    }
+  }
+
+
+  // Post as yourself or anonymous
+  .review-post-as {
+    div + div {
+      margin-top: 8px;
+    }
+  }
+
+
+  // NPS score consists of three parts:
+  // - The NPS question ("would you refer ...")
+  // - Radio buttons for the values 0 through 10, and below them the textual
+  //   value
+  // - The labels 'least likely' (underneath 0) and the label 'most likely'
+  //   (underneath 10)
+  .review-nps {
+  }
+  .review-nps-question {
+  }
+  .review-nps-answers {
+    width: 100%;
+    max-width: 640px;
+
+    .review-nps-value {
+      // We have 11 distinct values, 100/11 = 9.09%.
+      width: 9.09%;
+      text-align: center;
+      float: left;
+      height: 3em;
+    }
+    label, input {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .review-nps-least {
+      clear: both;
+      float: left;
+    }
+    .review-nps-most {
+      float: right;
+    }
+
+    .clearfix;
+  }
+
+
+  // Review policy and button for publishing the review.
+  .review-agreement {
+    color: @dark-gray;
+  }
+  .review-submit {
+    button {
+      .button;
+      .button.primary;
+      .helvetica;
+      display: block;
+      margin: 0 auto;
+    }
+    margin-bottom: 20px;
+  }
+
 }
